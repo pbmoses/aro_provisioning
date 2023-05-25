@@ -1,0 +1,6 @@
+  - name: Create a virtual network
+    azure_rm_virtualnetwork:
+      resource_group: "{{ RESOURCEGROUP }}" 
+      name: "{{ VIRTNETNAME }}" 
+      address_prefixes_cidr:
+        - "10.0.0.0/22"

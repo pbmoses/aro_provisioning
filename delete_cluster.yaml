@@ -1,0 +1,11 @@
+- name: Delete ARO cluster 
+  hosts: localhost 
+  tasks:
+  - include_vars: encrypted-aro_vars.yaml
+
+  - name: Delete OpenShift Managed Cluster
+    azure.azcollection.azure_rm_openshiftmanagedcluster:
+      resource_group: '{{ RESOURCEGROUP }}'
+      name: '{{ CLUSTER }}'
+      location: eastus
+      state: absent

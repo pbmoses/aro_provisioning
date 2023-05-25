@@ -1,0 +1,8 @@
+---
+# tasks file for aro-cluster
+- include_vars: encrypted-aro_vars.yaml
+- import_tasks: create_resource_group.yml
+- import_tasks: create_virtual_network.yaml
+- import_tasks: create_virtual_subnet_W.yaml
+- import_tasks: create_virtual_subnet_CP.yaml
+- import_tasks: create_cluster.yaml

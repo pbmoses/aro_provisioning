@@ -1,0 +1,22 @@
+  - name: Create OCP cluster on Azure
+    azure.azcollection.azure_rm_openshiftmanagedcluster:
+      log_mode: debug
+      resource_group: "{{ RESOURCEGROUP }}"
+      location: "{{ LOCATION }}"
+      name: "{{ CLUSTER }}"
+      cluster_profile:
+        cluster_resource_group_id: "/subscriptions/{{ SUBSCRIPTION }}/resourceGroups/clusterResourceGroup"
+        version: "{{ OPENSHIFT_VERSION }}"
+      service_principal_profile:
+        client_id: "{{ CLIENT_ID }}" 
+        client_secret: "{{ PASSWORD }}"
+  
+      master_profile:
+        vm_size : "{{ MASTER_PROFILE }}"
+        subnet_id: "{{ MASTERSUBNET }}"
+      worker_profiles:
+        - vm_size : "{{ WORKER_PROFILE }}"
+          subnet_id: "{{ WORKERSUBNET }}"
+          count: "{{ WORKER_COUNT }}"
+        
+
