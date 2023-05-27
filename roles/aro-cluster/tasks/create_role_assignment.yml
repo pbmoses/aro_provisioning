@@ -1,0 +1,9 @@
+- name: Create a role assignment
+  azure_rm_roleassignment:
+    scope: "/subscriptions/{{ SUBSCRIPTION}}/resourceGroups/{{ RESOURCEGROUP }}"
+## your assignee object is found in your user info in AD
+    assignee_object_id: "{{ ASSIGNEE_OBJECT_ID }}"
+    
+#to retrieve the role definnition ID: az role definition list | grep -A 10 "Network Contributor"
+    role_definition_id:
+      "/subscriptions/{{ SUBSCRIPTION }}/providers/Microsoft.Authorization/roleDefinitions/{{ ROLE_DEFINITION_ID }}"
