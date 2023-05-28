@@ -18,4 +18,5 @@
         - vm_size : "{{ WORKER_PROFILE }}"
           subnet_id: "{{ WORKERSUBNET }}"
           count: "{{ WORKER_COUNT }}"
-    register: aro_cluster_create
+        
+
