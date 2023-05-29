@@ -1,0 +1,5 @@
+---
+# tasks file for aro-storage
+- include_vars: storage_group_vars.yml
+- import_tasks: create_storage_group.yml
+- import_tasks: create_storage_account.yml

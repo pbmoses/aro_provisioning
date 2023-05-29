@@ -1,0 +1,14 @@
+#az storage account create \
+#       --name $AZURE_STORAGE_ACCOUNT_NAME \
+#       --resource-group $AZURE_FILES_RESOURCE_GROUP \
+#       --kind StorageV2 \
+#       --sku Standard_LRS
+
+- name: create an account
+  azure_rm_storageaccount:
+    resource_group: "{{ RESOURCEGROUP }}" 
+    name: "{{ NAME }}" 
+    type: Standard_LRS
+    kind: StorageV2
+    tags:
+      testing: testing-pmoses
