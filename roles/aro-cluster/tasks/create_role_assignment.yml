@@ -1,7 +1,9 @@
 - name: Create a role assignment
   azure_rm_roleassignment:
-    scope: "/subscriptions/{{ SUBSCRIPTION}}/resourceGroups/{{ RESOURCEGROUP }}/providers/Microsoft.Network/virtualNetworks/{{ VIRTNETNAME }}" 
+    scope: "/subscriptions/{{ SUBSCRIPTION }}/resourceGroups/{{ RESOURCEGROUP }}/providers/Microsoft.Network/virtualNetworks/{{ VIRTNETNAME }}" 
     assignee_object_id: "{{ ASSIGNEE_OBJECT_ID }}" 
     role_definition_id:
       "/subscriptions/{{ SUBSCRIPTION }}/providers/Microsoft.Authorization/roleDefinitions/{{ ROLE_DEFINITION_ID }}"
+
+#az role definition list --> network contributor
 
