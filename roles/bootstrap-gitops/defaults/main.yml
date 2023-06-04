@@ -1,2 +1,7 @@
 ---
 # defaults file for bootstrap-gitops
+gitops_expected_crds:
+- applicationsets.argoproj.io
+- applications.argoproj.io
+- appprojects.argoproj.io
+- argocds.argoproj.io
