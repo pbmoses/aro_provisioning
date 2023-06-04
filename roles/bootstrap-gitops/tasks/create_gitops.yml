@@ -16,3 +16,8 @@
   retries: 30
   delay: 10
 
+
+- name: Create initial Application
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('file', 'templates/argo_app_demo.yml') | from_yaml_all }}"
