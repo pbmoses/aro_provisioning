@@ -16,7 +16,7 @@
   retries: 30
   delay: 10
 
-
+#we will fail below if updates are manual install plan is not approved. add patch to approve IP, WIP. 
 - name: Create initial Application
   kubernetes.core.k8s:
     state: present
