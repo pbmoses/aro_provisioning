@@ -3,7 +3,35 @@
   kubernetes.core.k8s:
     state: present
     definition: "{{ lookup('template', 'subs.yml.j2') }}"
+  register: install_gitops_output
 
+
+- name: installplan name
+  set_fact:
+   ip_name: "{{ install_gitops_output | json_query('result.status.installplan.name') }}"
+
+- name: Print install plan name 
+  debug:
+    msg: "{{ ip_name }}"
+
+- pause:
+    seconds: 30
+
+- name: Apply multiple patch operations to an existing Pod
+  kubernetes.core.k8s_json_patch:
+    api_version: operators.coreos.com/v1alpha1
+    kind: InstallPlan 
+    namespace: openshift-operators 
+    name: "{{ ip_name }}" 
+    patch:
+      - op: replace 
+        path: /spec/approved
+        value: true 
+
+#oc patch installplan install-dq68d \
+#    --namespace openshift-logging \
+#    --type merge \
+#    --patch '{"spec":{"approved":true}}'
 
 - name: Wait for GitOps CRD to exist
   kubernetes.core.k8s_info:
