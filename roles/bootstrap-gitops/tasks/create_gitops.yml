@@ -3,14 +3,23 @@
   kubernetes.core.k8s:
     state: present
     definition: "{{ lookup('template', 'subs.yml.j2') }}"
+
+#for some reason, the IP plan is not in the first run of this, so re-run ?? sort this out later
+- name: Get the install plan name and register 
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('template', 'subs.yml.j2') }}"
   register: install_gitops_output
 
-- pause:
-    seconds: 30 
-
+- name: Print install plan name
+  debug:
+    msg: "{{ install_gitops_output.result.status.installplan.name }}"
+  
 - name: installplan name
   set_fact:
+#   ip_name: "{{ install_gitops_output.result.status.installplan.name }}"
    ip_name: "{{ install_gitops_output | json_query('result.status.installplan.name') }}"
+
 
 - name: Print install plan name 
   debug:
