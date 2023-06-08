@@ -6,7 +6,7 @@
   register: install_gitops_output
 
 - pause:
-    seconds: 15 
+    seconds: 30 
 
 - name: installplan name
   set_fact:
