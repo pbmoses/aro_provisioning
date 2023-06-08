@@ -4,6 +4,10 @@
     state: present
     definition: "{{ lookup('template', 'subs.yml.j2') }}"
 
+
+- pause: 
+    seconds: 60
+
 #for some reason, the IP plan is not in the first run of this, so re-run ?? sort this out later
 - name: Get the install plan name and register 
   kubernetes.core.k8s:
